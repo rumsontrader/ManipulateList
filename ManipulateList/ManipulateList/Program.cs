@@ -18,7 +18,11 @@ namespace ManipulateList
             string inputWithPrefixRemoved;
             string prefix;
 
-            Console.WriteLine("Grocery List: To add an item type + item, to remove an item type - item, to clear the list type --, to exit type exit");
+            Console.WriteLine("Grocery List: To add an item type + item");
+            Console.WriteLine("To remove an item type - item");
+            Console.WriteLine("To clear the list type --");
+            Console.WriteLine("To exit hit enter");
+
 
             while (true)
             {
@@ -26,9 +30,31 @@ namespace ManipulateList
                 input = Console.ReadLine();
                 inputWithPrefixRemoved = input.Substring(2);
                 prefix = input.Substring(0, 2);
-            }
+                
+                switch (prefix)
+                {
+                    case "+ ":
+                        groceries.Add(inputWithPrefixRemoved);
+                        break;
 
-            Console.ReadLine();
+                    case "- ":
+                        groceries.Remove(inputWithPrefixRemoved);
+                        break;
+                    case "--": 
+                        groceries.Clear();
+                        break;
+                    default:
+                        System.Application.Exit();
+                }
+
+                for (int i = 0; i < groceries.Count; i++)
+                {
+                    Console.WriteLine($"Your list now contains:");
+                    Console.Write($"{groceries[i]} , ");
+                }
+            }
         }
     }
 }
+
+
