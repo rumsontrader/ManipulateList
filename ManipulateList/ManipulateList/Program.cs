@@ -10,6 +10,8 @@ namespace ManipulateList
     {
         static void Main(string[] args)
         {
+            var groceries = new List<string>();
+
         }
     }
 }
